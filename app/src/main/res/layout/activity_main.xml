@@ -24,6 +24,23 @@
         android:layout_height="wrap_content"
         android:text="Consultar Contnt Provi" />
 
+    <EditText
+        android:id="@+id/txtNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:hint="Nombre"/>
+
+    <EditText
+        android:id="@+id/txtApellido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:hint="Apellido"/>
 
     <Button
         android:id="@+id/btnInsert"
@@ -33,6 +50,15 @@
 
 
     </Button>
+
+    <EditText
+        android:id="@+id/txtIdUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:hint="ID a actualizar"/>
 
     <Button
         android:id="@+id/btnUpdate"

@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText txtIdEliminar;
+    EditText txtIdEliminar, txtIdActualizar, txtNombre, txtApellido;
 
     private void consultarContentProvider(){
         Cursor cursor = getContentResolver().query(
@@ -44,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         txtIdEliminar = findViewById(R.id.txtIdEliminar);
+        txtNombre = findViewById(R.id.txtNombre);
+        txtApellido = findViewById(R.id.txtApellido);
+        txtIdActualizar = findViewById(R.id.txtIdUpdate);
 
         Cursor c = getContentResolver().query(UserDictionary.Words.CONTENT_URI,
                 new String[] {UserDictionary.Words.WORD,
@@ -63,9 +66,12 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnInsert).setOnClickListener(
                 view -> {
 
+                    String nombre = txtNombre.getText().toString();
+                    String apellido = txtApellido.getText().toString();
+
                     ContentValues cv = new ContentValues();
-                    cv.put(UsuarioContrato.COLUMN_FIRSTNAME, "Pedro");
-                    cv.put(UsuarioContrato.COLUMN_LASTNAME, "Dominguez");
+                    cv.put(UsuarioContrato.COLUMN_FIRSTNAME, nombre);
+                    cv.put(UsuarioContrato.COLUMN_LASTNAME, apellido);
 
                     Uri uriInsert = getContentResolver().insert(
                             UsuarioContrato.CONTENT_URI,
@@ -87,8 +93,10 @@ public class MainActivity extends AppCompatActivity {
                     cv.put(UsuarioContrato.COLUMN_FIRSTNAME, "Pablo");
                     cv.put(UsuarioContrato.COLUMN_LASTNAME, "Herrera");
 
+                    String id = txtIdActualizar.getText().toString();
+
                     int elemtosAfectados = getContentResolver().update(
-                            Uri.withAppendedPath(UsuarioContrato.CONTENT_URI, "15")   ,
+                            Uri.withAppendedPath(UsuarioContrato.CONTENT_URI, id)   ,
                             cv,
                             null, null
                     );
