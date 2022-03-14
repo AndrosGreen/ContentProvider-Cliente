@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.UserDictionary;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText txtIdEliminar;
 
     private void consultarContentProvider(){
         Cursor cursor = getContentResolver().query(
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        txtIdEliminar = findViewById(R.id.txtIdEliminar);
 
         Cursor c = getContentResolver().query(UserDictionary.Words.CONTENT_URI,
                 new String[] {UserDictionary.Words.WORD,
@@ -95,6 +98,19 @@ public class MainActivity extends AppCompatActivity {
                             elemtosAfectados, Toast.LENGTH_SHORT).show();
 
 
+                }
+        );
+
+        findViewById(R.id.btnDelete).setOnClickListener(
+                view -> {
+
+                    String id = txtIdEliminar.getText().toString();
+
+                    Uri nuevaUri = Uri.withAppendedPath(UsuarioContrato.CONTENT_URI, id);
+
+                    int resultado = getContentResolver().delete(nuevaUri,null,null);
+
+                    Toast.makeText(this, "usuario eliminado" , Toast.LENGTH_SHORT).show();
                 }
         );
 

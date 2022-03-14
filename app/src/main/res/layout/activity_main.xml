@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
+    android:padding="20dp"
     >
 
     <TextView
@@ -39,6 +40,19 @@
         android:layout_height="wrap_content"
         android:text="Update Contnt Provi" />
 
+    <EditText
+        android:id="@+id/txtIdEliminar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:hint="ID a eliminar"/>
 
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DELETE Contnt Provi" />
 
 </LinearLayout>
